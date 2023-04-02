@@ -1,15 +1,21 @@
-interface RootObject {
+export interface NewsTypes {
+  status: string;
+  totalResults: number;
+  articles: Article[];
+}
+
+interface Article {
   source: Source;
-  author: string;
+  author?: string;
   title: string;
   description: string;
   url: string;
-  urlToImage: string;
+  urlToImage?: string;
   publishedAt: string;
-  content: string;
+  content?: string;
 }
 
 interface Source {
-  id: string;
+  id?: string;
   name: string;
 }
