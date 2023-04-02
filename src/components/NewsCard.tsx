@@ -6,7 +6,7 @@ import placeHolderImage from "../Resources/Images/newspaper-background-concept.j
 
 import { useState } from "react";
 
-const NewsCard = ({ NewsData }: { NewsData: NewsTypes["articles"][1] }) => {
+const NewsCard = ({ NewsData }: { NewsData: NewsTypes["articles"][0] }) => {
   if (!NewsData) {
     return null;
   }
@@ -30,13 +30,10 @@ const NewsCard = ({ NewsData }: { NewsData: NewsTypes["articles"][1] }) => {
           }
         </div>
 
-        <div className="px-4 pb-5 h-60 ">
+        <div className="px-4 pb-5 h-60 flex  flex-col justify-between ">
           <h1 className="text-xl font-semibold py-6 pb-5 font-mainFont ">
             {NewsData.title}
           </h1>
-          {/* <p className="py-2 ">{NewsData.author}</p> */}
-          {/* <p>{NewsData.description}</p>
-          <p className="font-mainFont pb-4">{NewsData.content}</p> */}
           <a
             className="text-blue-500 font-semibold font-mainFont pt-5"
             href={NewsData.url}

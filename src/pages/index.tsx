@@ -11,6 +11,7 @@ export default function Home() {
 
   const [searchtext, setsearchtext] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("");
+  const [pageNumber,setPageNumber] = useState(1)
 
   const handleTopics = (value: string) => {
     if (selectedTopic == value && selectedTopic != "") {
@@ -23,23 +24,25 @@ export default function Home() {
   };
 
 
-
-
+ //`https://newsapi.org/v2/everything?${searchtext}pageSize=20&page=${pageNumber}&apiKey=5cafeba9156d4331afe4dfa7784a02c0`;
+// ;
 
   const getNewsData = async (): Promise<NewsTypes> => {
     const returnData = await axios.get(
-      `https://newsapi.org/v2/top-headlines?${searchtext}country=in&${selectedTopic}apiKey=0b179aff66094560a4e5de6e3068ae7a`
+      `https://newsapi.org/v2/top-headlines?pageSize=11&page=${pageNumber}&${searchtext}country=in&${selectedTopic}apiKey=5cafeba9156d4331afe4dfa7784a02c0`
     );
     return returnData.data;
   };
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["newsdata", selectedTopic,searchtext],
+    queryKey: ["newsdata", selectedTopic,searchtext,pageNumber],
     queryFn: getNewsData,
+    keepPreviousData:true
+    
   });
 
-  const test = data?.articles.map((item) => item.urlToImage);
  
+  console.log(pageNumber)
 
   return (
     <div className=" min-h-screen bg-[#F6F6F6] overflow-hidden   ">
@@ -54,6 +57,22 @@ export default function Home() {
               </div>
             );
           })}
+      </div>
+      <div>
+        <button
+          className="my-5 p-2 mx-4 border-2 border-black "
+          onClick={() => setPageNumber((page) => page - 1)}
+          disabled={pageNumber == 1}
+        >
+          &#x2190; Previous Page
+        </button>
+        <button
+          className="my-5 p-2 mx-4 border-2 border-black "
+          onClick={() => setPageNumber((page) => page + 1)}
+          disabled={pageNumber == 3}
+        >
+          Next Page &#x2192;
+        </button>
       </div>
     </div>
   );

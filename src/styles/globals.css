@@ -9,3 +9,7 @@
         font-family: '"Montserrat", 'sans-serif'';
     }
 }
+
+.filterButtons{
+    @apply h-full px-3 py-2 rounded-xl focus:bg-blue-500 focus:text-white hover:bg-blue-400 ease-in-out transition-all hover:text-white font-mainFont
+}
