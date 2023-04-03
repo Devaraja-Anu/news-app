@@ -1,6 +1,6 @@
 
-Dependancies: NextJS, Axios, React Query, Tailwind CSS
-
+Dependencies: NextJS, Axios, React Query, Tailwind CSS
+ 
 Not all responses consistently have details, descriptions or authors. Therefore these have been ignored to ensure a more streamlined experience. The source articles can still be accessed via the links provided.
 
 
