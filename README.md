@@ -1,4 +1,4 @@
-Live Site : news-api-app-demo.netlify.app
+Live Site : https://news-api-app-demo.netlify.app
 
 Dependancies: NextJS, Axios, React Query, Tailwind CSS
 
