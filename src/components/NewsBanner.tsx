@@ -2,18 +2,18 @@ import { NewsTypes } from "@/types/NewsTypes";
 import React from "react";
 
 const NewsBanner = ({
-  BannerData,
+  bannerData,
 }: {
-  BannerData?: NewsTypes["articles"][0];
+  bannerData?: NewsTypes["articles"][0];
 }) => {
 
-  const bannerImage = BannerData?.urlToImage
-    ? BannerData.urlToImage
+  const bannerImage = bannerData?.urlToImage
+    ? bannerData.urlToImage
     : "/newspaper-background-concept.jpg";
 
 
 
-    if(!BannerData?.title) return null
+    if(!bannerData?.title) return null
 
   return (
     <div className="w-full flex justify-center ">
@@ -21,7 +21,7 @@ const NewsBanner = ({
         className={`w-10/12 h-11rem lg:h-96 flex flex-col md:flex-row bg-white mt-10 mb-5 justify-between rounded-xl overflow-hidden shadow-xl border-2 border-gray-200`}
       >
         <div className="rounded-xl block md:hidden">
-          <a href={BannerData?.url}>
+          <a href={bannerData?.url}>
             <img
               className="w-full h-44  object-cover hover:scale-110 transition-all ease-in-out duration-500"
               src={bannerImage}
@@ -33,13 +33,13 @@ const NewsBanner = ({
 
         <div className="w-full h-full px-10 xl:pl-20 pt-7 md:py-20 flex flex-col justify-around ">
           <p className=" py-5 font-semibold text-xl md:text-2xl h-60  overflow-clip xl:text-4xl">
-            {BannerData.title.length > 100
-              ? BannerData.title.slice(0, 99) + "..."
-              : BannerData.title}
+            {bannerData.title.length > 100
+              ? bannerData.title.slice(0, 99) + "..."
+              : bannerData.title}
           </p>
           <a
             className="text-blue-400 text-xl pb-5 font-semibold font-mainFont pt-5"
-            href={BannerData?.url}
+            href={bannerData?.url}
           >
             {" "}
             Know More &#x2192;{" "}
@@ -47,7 +47,7 @@ const NewsBanner = ({
         </div>
 
         <div className="rounded-xl w-full hidden md:block">
-          <a href={BannerData?.url}>
+          <a href={bannerData?.url}>
             <img
               className="w-full h-full  object-cover hover:scale-110 transition-all ease-in-out duration-500"
               src={bannerImage}

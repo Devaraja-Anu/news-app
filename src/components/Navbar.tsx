@@ -27,6 +27,7 @@ const Navbar = ({
   return (
     <>
       <div>
+        
         <div className="flex flex-col md:flex-row bg-white w-full h-fit md:h-28 justify-between items-center px-5 lg:px-20">
           <p className="font-semibold text-3xl py-3 mx-5">NEWS API</p>
           <input
@@ -46,7 +47,8 @@ const Navbar = ({
             Filters{" "}
           </button>
         </div>
-        <></>
+
+          {/* Filter dropdown */}
         <div
         onMouseLeave={()=>setCollapse(!collapse)}
           className={`bg-white bg-opacity-90 w-full transition-all duration-300 ${
@@ -56,12 +58,7 @@ const Navbar = ({
         >
           <div className="flex flex-col justify-start items-center bg-white pb-10">
 
-
             {filterTopics.map((item,index) => {
-
-
-
-
               return (
                 <button key={index}
               onClick={() => handleTopics(item)}
