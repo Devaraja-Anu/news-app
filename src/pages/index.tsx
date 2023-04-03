@@ -4,56 +4,49 @@ import NewsCard from "@/components/NewsCard";
 import useDebounce from "@/hooks/useDebounce";
 import { useNewsQuery } from "@/hooks/useNewsQuery";
 import { NewsTypes } from "@/types/NewsTypes";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { TailSpin } from "react-loader-spinner";
-import noDataImage from '../../public/noDataImage.jpg'
-
+import noDataImage from "../../public/noDataImage.jpg";
 
 export default function Home() {
-
   const [searchtext, setsearchtext] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("");
-  const [pageNumber,setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(1);
 
   const handleTopics = (value: string) => {
     if (selectedTopic == value && selectedTopic != "") {
       if (selectedTopic == "") {
-        return(
-           setSelectedTopic(`category=${value}&`),
-           setPageNumber(1)
-           )
+        return setSelectedTopic(`category=${value}&`), setPageNumber(1);
       } else {
-        return setSelectedTopic(""),
-        (setPageNumber(1))
+        return setSelectedTopic(""), setPageNumber(1);
       }
-    } else return( (setSelectedTopic(`category=${value}&`)), setPageNumber(1))
+    } else return setSelectedTopic(`category=${value}&`), setPageNumber(1);
   };
 
-  const debouncedValue = useDebounce(searchtext,800)
+  const debouncedValue = useDebounce(searchtext, 800);
 
+  const { data, isError, isLoading } = useNewsQuery(
+    debouncedValue,
+    pageNumber,
+    selectedTopic
+  );
 
-const { data, isError, isLoading } = useNewsQuery(debouncedValue, pageNumber,selectedTopic);
+  const [bannerData, ...otherArticles] = [...(data?.articles ?? [])];
+  const pagesLength = data?.totalResults
+    ? Math.floor(data.totalResults / 7)
+    : 2;
 
-const [bannerData,...otherArticles] = [...data?.articles ?? []]
-const pagesLength = data?.totalResults? Math.floor(data.totalResults/7): 2 
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pageNumber, selectedTopic]);
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, [pageNumber, selectedTopic]);
-
-  
-
-  if(isError){
+  if (isError) {
     return (
       <div className="w-screen h-screen overflow-hidden flex justify-center align-middle">
         <p className="text-6xl font-bold pt-96 ">Error</p>
       </div>
     );
   }
- 
-  
-
 
   return (
     <div className=" min-h-screen bg-[#F6F6F6] overflow-hidden   ">
@@ -106,7 +99,9 @@ useEffect(() => {
                     src={"/noDataImage.jpg"}
                     alt="No data Found"
                   />{" "}
-                  <h1 className=" text-xl font-semibold pt-4 sm:text-3xl">Search Data Not Found</h1>
+                  <h1 className=" text-xl font-semibold pt-4 sm:text-3xl">
+                    Search Data Not Found
+                  </h1>
                 </div>
               )}
             </div>

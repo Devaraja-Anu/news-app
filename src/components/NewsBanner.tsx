@@ -6,14 +6,11 @@ const NewsBanner = ({
 }: {
   bannerData?: NewsTypes["articles"][0];
 }) => {
-
   const bannerImage = bannerData?.urlToImage
     ? bannerData.urlToImage
     : "/newspaper-background-concept.jpg";
 
-
-
-    if(!bannerData?.title) return null
+  if (!bannerData?.title) return null;
 
   return (
     <div className="w-full flex justify-center ">
