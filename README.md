@@ -10,7 +10,5 @@ I. NextJS uses next/image to handle images. The domain of images thus provided h
 
 II. NEWS API has limited the max no of API calls per day to 100. Further calls will yield an Error
 
-III.  Some news links provided by the API will rarely have a 302 error so the cards or card images may not load immediately   
-
-IV. Requests from the browser are not allowed on the Developer plan, except from localhost. 
+III. Requests from the browser are not allowed on the Developer plan, except from localhost. 
     So live sites, (Like this deploy i tried:-https://news-api-app-demo.netlify.app ), WILL NOT WORK
