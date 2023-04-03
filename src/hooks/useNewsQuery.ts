@@ -7,7 +7,7 @@ export const useNewsQuery = (searchtext: string, pageNumber: number,selectedTopi
 
     const getNewsData = async (): Promise<NewsTypes> => {
       const returnData = await axios.get(
-        `https://newsapi.org/v2/top-headlines?pageSize=8&page=${pageNumber}&${searchtext}country=in&${selectedTopic}apiKey=0b179aff66094560a4e5de6e3068ae7a`
+        `https://newsapi.org/v2/top-headlines?pageSize=8&page=${pageNumber}&${searchtext}country=in&${selectedTopic}apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
       );
       return returnData.data;
     };

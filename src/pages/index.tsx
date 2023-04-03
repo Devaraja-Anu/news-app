@@ -31,7 +31,7 @@ export default function Home() {
   const { data, isError, isLoading } = useNewsQuery(searchtext, pageNumber,selectedTopic);
   const bannerData = data?.articles.splice(0,1)
 const pagesLength = data?.totalResults? Math.floor(data.totalResults/7): 2 
-
+  
 
 useEffect(() => {
   window.scrollTo(0, 0);
