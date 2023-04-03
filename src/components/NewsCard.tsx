@@ -7,6 +7,11 @@ import placeHolderImage from "../Resources/Images/newspaper-background-concept.j
 import { useState } from "react";
 
 const NewsCard = ({ NewsData }: { NewsData: NewsTypes["articles"][0] }) => {
+
+
+  const headline = NewsData.title.length > 100 ? NewsData.title.slice(0,99)+'...':NewsData.title
+
+
   if (!NewsData) {
     return null;
   }
@@ -20,10 +25,15 @@ const NewsCard = ({ NewsData }: { NewsData: NewsTypes["articles"][0] }) => {
               {/* <picture> */}
               <img
                 className="w-full h-44 rounded-t-xl object-cover hover:scale-110 ease-in-out duration-500 transition-all"
-                src={NewsData.urlToImage ? NewsData.urlToImage : "/newspaper-background-concept.jpg"}
+                src={
+                  NewsData.urlToImage
+                    ? NewsData.urlToImage
+                    : "/newspaper-background-concept.jpg"
+                }
                 width={600}
                 height={400}
-                alt={"representative for news"}
+                alt={"representative text img displayed in news article"}
+                placeholder="/newspaper-background-concept.jpg"
               />
               {/* </picture> */}
             </a>
@@ -31,11 +41,11 @@ const NewsCard = ({ NewsData }: { NewsData: NewsTypes["articles"][0] }) => {
         </div>
 
         <div className="px-4 pb-5 h-60 flex  flex-col justify-between ">
-          <h1 className="text-xl font-semibold py-6 pb-5 font-mainFont ">
-            {NewsData.title}
+          <h1 className="text-xl  font-semibold pt-10 md:py-6 sm:pb-5 font-mainFont ">
+            {headline}
           </h1>
           <a
-            className="text-blue-500 font-semibold font-mainFont pt-5"
+            className="text-blue-400 font-semibold font-mainFont pt-5"
             href={NewsData.url}
           >
             Know More &#x2192;

@@ -11,5 +11,6 @@
 }
 
 .filterButtons{
-    @apply h-full px-3 py-2 rounded-xl focus:bg-blue-500 focus:text-white hover:bg-blue-400 ease-in-out transition-all hover:text-white font-mainFont
+
+@apply h-full px-3 py-2 rounded-xl translate-y-3 text-blue-400 font-semibold text-xl focus:bg-blue-500 focus:text-white hover:bg-blue-400 ease-in-out transition-all hover:text-white font-mainFont active:bg-blue-400 active:text-white
 }
