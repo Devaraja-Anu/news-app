@@ -100,7 +100,7 @@ useEffect(() => {
                   }
                 )
               ) : (
-                <div className="w-full  px-5 col-span-full  h-full flex flex-col items-center justify-center shadow-xl">
+                <div className="w-full  px-5 col-span-full  h-full flex flex-col items-center justify-center ">
                   <img
                     className="object-cover w-96 h-96"
                     src={"/noDataImage.jpg"}
